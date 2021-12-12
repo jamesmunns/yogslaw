@@ -52,14 +52,57 @@ In particular, any DRM scheme I can imagine would be easily defeated by determin
 
 ### Summary of process
 
-1. When authoring a library, the author lists the package under a non-commerical license, such as the Prosperity License.
-2. The Author also includes an asymmetric public key (e.g. ed25519) used to sign licenses of the project
+1. When authoring a library or application, the author lists the package under a non-commerical license, such as the Prosperity License.
+2. The Author also includes a unique-to-the-project asymmetric public key (e.g. ed25519) used to sign licenses of the project
 3. The author includes a `build.rs` script that validates the license selected by the user. This would be invoked at compile time.
 4. When depending on the library in question, the user would be expected to provide a metadata file in their project, such as `license-$libraryname.toml`. This file would contain one of the following kinds of content:
     1. A line stating that the project is for non-commercial usage, e.g. "no license"
     2. Contents that include the contact email, project name, a randomly generated license ID (and/or one-time pad), as well as a signature created from the library's private key of the above data
     3. Contents that include the contact email, project name, license ID (and/or one-time pad), AND an expiration date, as well as a signature created from the library's private key of the above data
 5. If the user failed to provide the above metadata, the `build.rs` script would cause the build to fail.
+
+An example of a non-commercial license file:
+
+```toml
+# license-example-lib.toml
+
+usage = "non-commercial"
+```
+
+An example of a commercial license file:
+
+```toml
+# license-example-lib.toml
+
+contact-email = "user@example.com"
+project = "good-example"
+usage = "licensed"
+
+# uuid
+license-id = "5a001d53-b6ab-4f64-996a-f710dcdbc637"
+
+# 64-byte ed25519 signature of the above metadata, as hex
+license-signature = "feedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafe"
+```
+
+An example of a warrantied license file:
+
+```toml
+# license-example-lib.toml
+
+contact-email = "user@example.com"
+project = "good-example"
+usage = "licensed"
+
+# uuid
+license-id = "5a001d53-b6ab-4f64-996a-f710dcdbc637"
+
+# datetime, as rfc3339/iso8601 format
+expiration = "2022-04-20T23:20:50.52Z"
+
+# 64-byte ed25519 signature of the above metadata, as hex
+license-signature = "feedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafefeedcafe"
+```
 
 ### Technical notes
 
