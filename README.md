@@ -14,6 +14,8 @@ The name comes from writer Jim Macdonald's "Yog's Law", who reminded writers tha
 
 ## What are my goals?
 
+In my open source projects, I aim to:
+
 * Share my projects with people to see, learn from, be able to debug.
 * Make clear what other people's expectations should be (regarding support, change requests, security updates, maintenance) for code I write: namely none, unless otherwise agreed.
 * Allow generally unrestricted use for non-commercial users
@@ -21,6 +23,8 @@ The name comes from writer Jim Macdonald's "Yog's Law", who reminded writers tha
 * Provide an easy, low-hassle way to pay for additional support and increased maintenance expectations
 
 ## What are **NOT** my goals?
+
+In my open source projects, I don't generally care about the following:
 
 * I am not interested in making my code "as widely usable/used as possible", at least not with this approach.
 * I am not interested in worrying about making code that is "incompatible with commercial usage", at least at the "free" tier
