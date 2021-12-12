@@ -92,7 +92,7 @@ An example of a warrantied license file:
 
 contact-email = "user@example.com"
 project = "good-example"
-usage = "licensed"
+usage = "warrantied"
 
 # uuid
 license-id = "5a001d53-b6ab-4f64-996a-f710dcdbc637"
